@@ -1,1 +1,56 @@
-<p>supplier-details works!</p>
+<h1>Supplier Details</h1>
+
+@if (supplier) {
+  <div>
+    <label>ID:</label>
+    <input type="number" name="id" [(ngModel)]="supplier.id" readonly />
+  </div>
+
+  <div>
+    <label>Supplier Name:</label>
+    <input type="text" name="supplierName" [(ngModel)]="supplier.supplierName" />
+  </div>
+
+  <div>
+    <label>Location:</label>
+    <input type="text" name="location" [(ngModel)]="supplier.location" />
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input type="email" name="email" [(ngModel)]="supplier.email" />
+  </div>
+
+  <div>
+    <label>Contact Person:</label>
+    <input type="text" name="contactPerson" [(ngModel)]="supplier.contactPerson" />
+  </div>
+
+  <div>
+    <label>Phone:</label>
+    <input type="text" name="phone" [(ngModel)]="supplier.phone" />
+  </div>
+
+  <div>
+    <label>Status:</label>
+    <input type="text" name="status" [(ngModel)]="supplier.status" />
+  </div>
+
+  <div>
+    <label>Website:</label>
+    <input type="text" name="website" [(ngModel)]="supplier.website" />
+  </div>
+
+  <div>
+    <label>Products Supplied:</label>
+    <textarea name="productsSupplied" [(ngModel)]="productsAsString" rows="3"></textarea>
+  </div>
+
+  <br>
+  <button (click)="saveChanges()">Save</button>
+  <button (click)="goBack()">Back</button>
+
+} @else {
+  <p>Supplier not found.</p>
+  <button (click)="goBack()">Back</button>
+}

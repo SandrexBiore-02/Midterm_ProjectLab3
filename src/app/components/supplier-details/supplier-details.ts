@@ -1,9 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Supplier } from '../../models/supplier.interface';
+import { SupplierService } from '../../services/supplier.service';
 
 @Component({
   selector: 'app-supplier-details',
-  imports: [],
-  templateUrl: './supplier-details.html',
-  styleUrl: './supplier-details.css',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './supplier-details.component.html',
+  styleUrls: ['./supplier-details.component.css']
 })
-export class SupplierDetails {}
+export class SupplierDetailsComponent implements OnInit {
+
+  supplier: Supplier | undefined;
+  supplierId: number = 0;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private supplierService: SupplierService
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.supplierId = Number(params['id']);
+      this.supplier = this.supplierService.getSupplierById(this.supplierId);
+    });
+  }
+
+  saveChanges(): void {
+    if (this.supplier) {
+      this.supplierService.updateSupplier(this.supplier);
+      alert('Changes saved successfully!');
+    }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/suppliers']);
+  }
+
+  get productsAsString(): string {
+    return this.supplier?.productsSupplied?.join(', ') ?? '';
+  }
+
+  set productsAsString(value: string) {
+    if (this.supplier) {
+      this.supplier.productsSupplied = value.split(',').map(p => p.trim()).filter(p => p.length > 0);
+    }
+  }
+}
