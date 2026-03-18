@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Supplier } from '../../models/supplier.interface';
-import { SupplierService } from '../../services/supplier.service';
+import { SupplierService } from '../../services/supplier';
 
 @Component({
   selector: 'app-suppliers-list',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './suppliers-list.component.html',
-  styleUrls: ['./suppliers-list.component.css']
+  templateUrl: './suppliers-list.html',
+  styleUrls: ['./suppliers-list.css']
 })
 export class SuppliersListComponent implements OnInit {
 

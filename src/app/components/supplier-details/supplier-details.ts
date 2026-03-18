@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Supplier } from '../../models/supplier.interface';
-import { SupplierService } from '../../services/supplier.service';
+import { SupplierService } from '../../services/supplier';
 
 @Component({
   selector: 'app-supplier-details',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './supplier-details.component.html',
-  styleUrls: ['./supplier-details.component.css']
+  templateUrl: './supplier-details.html',
+  styleUrls: ['./supplier-details.css']
 })
 export class SupplierDetailsComponent implements OnInit {
 

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { SuppliersListComponent } from './components/suppliers-list/suppliers-list.component';
-import { SupplierDetailsComponent } from './components/supplier-details/supplier-details.component';
+import { SuppliersListComponent } from './components/suppliers-list/suppliers-list';
+import { SupplierDetailsComponent } from './components/supplier-details/supplier-details';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/suppliers', pathMatch: 'full' },
